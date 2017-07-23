@@ -45,7 +45,7 @@ ezura
 
 ### Swift4 new Ranges!
 </br>
-### <span class="special">One-sided Ranges</span> <!-- .element: class="fragment" -->
+### <span><span class="special">One-sided Ranges</span></span> <!-- .element: class="fragment" -->
 
 +++
 
