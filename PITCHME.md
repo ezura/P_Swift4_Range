@@ -10,14 +10,14 @@ ezura
 * ezura
 * iOS engineer @ LINE
 * twitter: ezura (@eduraaa)
-
-<div>![icon](assets/images/acount_image.jpg)</div>
+</br>
+![icon](assets/images/acount_image.jpg)
 
 ---
 
 ### Range
 
----
+---?image=assets/images/lake.jpg
 
 あなたが思い浮かべた Range は
 #### Range <!-- .element: class="fragment" -->
