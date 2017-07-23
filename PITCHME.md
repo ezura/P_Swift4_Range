@@ -20,7 +20,7 @@ ezura
 ### Range
 
 ---?image=assets/images/lake.jpg
-### <span style="text-shadow: #000 1px 1px 0;"color:white;"">あなたが思い浮かべた `Range` は</span>
+### <span style="text-shadow: #000 1px 1px 0; color:white;">あなたが思い浮かべた `Range` は</span>
 #### <span style="color:white;">Range?</span> <!-- .element: class="fragment" -->
 #### <span style="color:white;">ClosedRange?</span> <!-- .element: class="fragment" -->
 #### <span style="color:white;">CountableRange?</span> <!-- .element: class="fragment" -->
