@@ -10,7 +10,7 @@ ezura
 * ezura
 * iOS engineer @ LINE
 * twitter: ezura (@eduraaa)
-![icon](asset/images/acount_image.jpg)
+![icon](assets/images/acount_image.jpg)
 
 ---
 
