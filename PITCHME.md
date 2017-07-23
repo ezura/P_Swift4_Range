@@ -20,9 +20,10 @@ ezura
 ---
 
 あなたが思い浮かべた Range は
-* Range <!-- .element: class="fragment" -->
-* Range <!-- .element: class="fragment" -->
-* Range <!-- .element: class="fragment" -->
+#### Range <!-- .element: class="fragment" -->
+#### ClosedRange <!-- .element: class="fragment" -->
+#### CountableRange <!-- .element: class="fragment" -->
+#### CountableClosedRange <!-- .element: class="fragment" -->
 
 ---
 
