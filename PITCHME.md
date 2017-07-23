@@ -52,6 +52,7 @@ ezura
 ## What is One-sided Ranges?
 * 5.0...  <!-- .element: class="fragment" -->
 * ..<5.0  <!-- .element: class="fragment" -->
+* ...5.0  <!-- .element: class="fragment" -->
 * 5...  <!-- .element: class="fragment" -->
 
 +++
@@ -61,7 +62,87 @@ ezura
 * ClosedRange ("a"..."z")
 * CountableRange (0..<5)
 * CountableClosedRange (0...5)
-* <span class="special">PartialRangeFrom</span>
+* <span class="special">PartialRangeFrom (5.0...)</span>
+* <span class="special">PartialRangeUpTo (..<5.0)</span>
+* <span class="special">PartialRangeThrough (...5.0)</span>
+* <span class="special">CountablePartialRangeFrom (5...)</span>
+* <span class="special">protocol RangeExpression</span>
 
++++
+
+今までと違い、
+One-sided Ranges (+ protocol) の純粋な追加 😊
+
++++
+
+### 何が便利になるの？
+
++++
+
+### Motivation
+書きやすさ・可読性の向上
+
++++
+
+```swift
+let s = "Hello, World!"
+let i = s.index(of: ",")!
+
+let greeting = s[s.startIndex..<i]   // "Hello"
+let _greeting = s.prefix(upTo: i)    // "Hello"
+let withComma = s.prefix(through: i) // "Hello,"
+let location = s.suffix(from: i)     // ", World!"
+```@[4-7](現状)
+
++++
+
+```swift
+let greeting = s[..<i]
+let withComma = s[...i]
+let location = s[i...]
+```
+
+```swift
+let greeting = s[s.startIndex..<i]   // "Hello"
+let _greeting = s.prefix(upTo: i)    // "Hello"
+let withComma = s.prefix(through: i) // "Hello,"
+let location = s.suffix(from: i)     // ", World!"
+```
++++
+
+```swift
+let array = ["ジャンプ", "サンデー", "ガンガン", "花とゆめ", "なかよし"]
+array[...3]
+array[3...]
+array[..<2]
+```
+
++++
+
+```swift
+switch "a" {
+case ..<"c": // ...
+case "c"...: // ...
+default: // ...
+}
+```
+(注: 全網羅していても `default` が必要)
+
++++
+
+```swift
+let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let asciiTable = zip(65..., alphabet) // Zip2Sequence
+asciiTable.forEach { print($0) }
+/*
+(65, "A")
+(66, "B")
+...
+(89, "Y")
+(90, "Z")
+*/
+```
+
+---
 
 
