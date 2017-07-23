@@ -92,7 +92,8 @@ let greeting = s[s.startIndex..<i]   // "Hello"
 let _greeting = s.prefix(upTo: i)    // "Hello"
 let withComma = s.prefix(through: i) // "Hello,"
 let location = s.suffix(from: i)     // ", World!"
-```@[4-7](現状)
+```
+@[4-7](現状)
 
 +++
 
