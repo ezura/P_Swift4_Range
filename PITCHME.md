@@ -50,10 +50,12 @@ ezura
 +++
 
 ## What is One-sided Ranges?
-* 5.0...  <!-- .element: class="fragment" -->
-* ..<5.0  <!-- .element: class="fragment" -->
-* ...5.0  <!-- .element: class="fragment" -->
-* 5...  <!-- .element: class="fragment" -->
+<div>
+* 5.0...
+* ..<5.0
+* ...5.0
+* 5...
+</div> <!-- .element: class="fragment" -->
 
 +++
 
@@ -70,7 +72,7 @@ ezura
 
 +++
 
-今までと違い、
+今までと違い、  
 One-sided Ranges (+ protocol) の純粋な追加 😊
 
 +++
@@ -93,29 +95,31 @@ let _greeting = s.prefix(upTo: i)    // "Hello"
 let withComma = s.prefix(through: i) // "Hello,"
 let location = s.suffix(from: i)     // ", World!"
 ```
-@[4-7](現状)
+@[4-5]
+@[6]
+@[7]
+
+現状
 
 +++
 
 ```swift
-let greeting = s[..<i]
-let withComma = s[...i]
-let location = s[i...]
-```
+let s = "Hello, World!"
+let i = s.index(of: ",")!
 
-```swift
-let greeting = s[s.startIndex..<i]   // "Hello"
-let _greeting = s.prefix(upTo: i)    // "Hello"
-let withComma = s.prefix(through: i) // "Hello,"
-let location = s.suffix(from: i)     // ", World!"
+let greeting = s[..<i]  // "Hello"
+let withComma = s[...i] // "Hello,"
+let location = s[i...] // ", World!"
 ```
+@[4-6]
+
 +++
 
 ```swift
 let array = ["ジャンプ", "サンデー", "ガンガン", "花とゆめ", "なかよし"]
-array[...3]
-array[3...]
-array[..<2]
+array[..<3] // ["ジャンプ", "サンデー", "ガンガン"]
+array[...2] // ["ジャンプ", "サンデー", "ガンガン"]
+array[3...] // ["花とゆめ", "なかよし"]
 ```
 
 +++
@@ -146,4 +150,61 @@ asciiTable.forEach { print($0) }
 
 ---
 
+違和感…
+
++++
+
+### Swift4
+* Range (0..<5.0)
+* ClosedRange ("a"..."z")
+* CountableRange (0..<5)
+* CountableClosedRange (0...5)
+* <span class="special">PartialRangeFrom (5.0...)</span>
+* <span class="special">PartialRangeUpTo (..<5.0)</span>
+* <span class="special">PartialRangeThrough (...5.0)</span>
+* <span class="special">CountablePartialRangeFrom (5...)</span>
+* <span class="special">protocol RangeExpression</span>
+
++++
+
+増えたのは型が 4 つと protocol？
+
++++
+
+```swift
+let greeting = s.prefix(upTo: i)
+let greeting = s[..<i] // use `PartialRangeUpTo`
+
+let withComma = s.prefix(through: i)
+let withComma = s[...i] // use `PartialRangeThrough`
+
+let location = s.suffix(from: i)
+let location = s[i...] // use `PartialRangeFrom`
+```
+
++++
+
+### 残りは
+
+#### CountablePartialRangeFrom
+#### protocol RangeExpression
+
++++
+
+今まで、Range 型間で直接的な関係がなかった  
+Range への変換を備えるように変更
+
+```swift
+public protocol RangeExpression {
+    associatedtype Bound : Comparable
+    public func relative<C>(to collection: C) -> Range<Self.Bound> where C : _Indexable, Self.Bound == C.Index
+    public func contains(_ element: Self.Bound) -> Bool
+}
+
+extension RangeExpression {
+    public static func ~=(pattern: Self, value: Self.Bound) -> Bool
+}
+```
+
++++
 
