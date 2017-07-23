@@ -62,7 +62,7 @@ ezura
 * ClosedRange ("a"..."z")
 * CountableRange (0..<5)
 * CountableClosedRange (0...5)
-* <span style="color:#e68782">PartialRangeFrom</span>
+* <span style="color:#ea8782">PartialRangeFrom</span>
 
 
 
