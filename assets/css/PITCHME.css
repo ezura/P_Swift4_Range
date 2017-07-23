@@ -15,3 +15,5 @@
 .reveal h5 { 
     text-transform: none;
 }
+
+.reveal .special { color: #ea8782; }
