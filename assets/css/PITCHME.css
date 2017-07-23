@@ -16,6 +16,6 @@
     text-transform: none;
 }
 
-.special {
+.reveal>* .special {
     color: #ea8782; 
 }
