@@ -30,24 +30,39 @@ ezura
 +++
 
 ### Swift3 Ranges
-* Range
-* ClosedRange
-* CountableRange
-* CountableClosedRange
+* Range (0..<5.0)
+* ClosedRange ("a"..."z")
+* CountableRange (0..<5)
+* CountableClosedRange (0...5)
 
 +++
 
 ### Swift2 Ranges
-* Range
-* ClosedInterval
-* HalfOpenInterval
+* Range (0..<5, 0...5)
+* ClosedInterval ("a"..."z")
+* HalfOpenInterval (0..<5.0)
 
 ---
 
 ### Swift4 new Ranges!
-#### One-sided Ranges <!-- .element: class="fragment" -->
+</br>
+### One-sided Ranges <!-- .element: class="fragment" -->
 
 +++
+
+## What is One-sided Ranges?
+* 5.0...  <!-- .element: class="fragment" -->
+* ..<5.0  <!-- .element: class="fragment" -->
+* 5...  <!-- .element: class="fragment" -->
+
++++
+
+### Swift4
+* Range (0..<5.0)
+* ClosedRange ("a"..."z")
+* CountableRange (0..<5)
+* CountableClosedRange (0...5)
+* <span style="color:#e68782">PartialRangeFrom</span>
 
 
 
