@@ -20,12 +20,13 @@ ezura
 ### Range
 
 ---?image=assets/images/lake.jpg
-
+<div style="color:white;">
 ### <span style="text-shadow: #000 1px 1px 0;">あなたが思い浮かべた `Range` は</span>
 #### Range? <!-- .element: class="fragment" -->
 #### ClosedRange? <!-- .element: class="fragment" -->
 #### CountableRange? <!-- .element: class="fragment" -->
 #### CountableClosedRange? <!-- .element: class="fragment" -->
+</div>
 
 +++
 
