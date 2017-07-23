@@ -21,12 +21,35 @@ ezura
 
 ---?image=assets/images/lake.jpg
 
-## あなたが思い浮かべた Range は
-#### Range <!-- .element: class="fragment" -->
-#### ClosedRange <!-- .element: class="fragment" -->
-#### CountableRange <!-- .element: class="fragment" -->
-#### CountableClosedRange <!-- .element: class="fragment" -->
+### あなたが思い浮かべた Range は
+#### Range? <!-- .element: class="fragment" -->
+#### ClosedRange? <!-- .element: class="fragment" -->
+#### CountableRange? <!-- .element: class="fragment" -->
+#### CountableClosedRange? <!-- .element: class="fragment" -->
+
++++
+
+### Swift3 Ranges
+* Range
+* ClosedRange
+* CountableRange
+* CountableClosedRange
+
++++
+
+### Swift2 Ranges
+* Range
+* ClosedInterval
+* HalfOpenInterval
 
 ---
+
+### Swift4
+new Ranges!
+
+#### One-sided Ranges <!-- .element: class="fragment" -->
+
++++
+
 
 
