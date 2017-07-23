@@ -191,8 +191,29 @@ let location = s[i...] // use `PartialRangeFrom`
 
 +++
 
+### CountablePartialRangeFrom
+
+```swift
+extension CountablePartialRangeFrom : Sequence 
+    where Bound : Strideable,
+          Bound.Stride : SignedInteger { ... }
+```
+
++++
+
+```swift
+let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ") // use CountablePartialRangeFrom
+```
+
+```swift
+
+```
+
++++
+
 今まで、Range 型間で直接的な関係がなかった  
-Range への変換を備えるように変更
+  
+Range への変換を備える
 
 ```swift
 public protocol RangeExpression {
