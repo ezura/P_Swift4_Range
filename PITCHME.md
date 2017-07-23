@@ -11,7 +11,7 @@ ezura
 * iOS engineer @ LINE
 * twitter: ezura (@eduraaa)
 </br>
-<div style="display: block;margin-left: auto;margin-right: auto;">![icon](assets/images/acount_image_c.png)</div>
+<div style="text-align: center">![icon](assets/images/acount_image_c.png)</div>
 
 ---
 
