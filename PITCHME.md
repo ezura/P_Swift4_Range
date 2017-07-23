@@ -10,8 +10,8 @@ ezura
 * ezura
 * iOS engineer @ LINE
 * twitter: ezura (@eduraaa)
-</br>
-<div style="text-align: center">
+
+<div style="text-align: center;border-radius: 50%">
 ![icon](assets/images/acount_image_c.png)
 </div>
 
@@ -21,7 +21,7 @@ ezura
 
 ---?image=assets/images/lake.jpg
 
-あなたが思い浮かべた Range は
+## あなたが思い浮かべた Range は
 #### Range <!-- .element: class="fragment" -->
 #### ClosedRange <!-- .element: class="fragment" -->
 #### CountableRange <!-- .element: class="fragment" -->
