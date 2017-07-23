@@ -16,4 +16,6 @@
     text-transform: none;
 }
 
-.reveal .special { color: #ea8782; }
+.special {
+    color: #ea8782; 
+}
