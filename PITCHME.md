@@ -21,7 +21,7 @@ ezura
 
 ---?image=assets/images/lake.jpg
 
-### あなたが思い浮かべた Range は
+### <span style="text-stroke:1px gray;">あなたが思い浮かべた Range は</span>
 #### Range? <!-- .element: class="fragment" -->
 #### ClosedRange? <!-- .element: class="fragment" -->
 #### CountableRange? <!-- .element: class="fragment" -->
