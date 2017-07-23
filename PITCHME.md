@@ -20,9 +20,9 @@ ezura
 ---
 
 あなたが思い浮かべた Range は
-#### Range |
-#### Range |
-#### Range |
+* Range |
+* Range |
+* Range |
 
 ---
 
