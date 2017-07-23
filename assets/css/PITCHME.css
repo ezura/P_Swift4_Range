@@ -16,6 +16,11 @@
     text-transform: none;
 }
 
+.reveal h1 .special,
+.reveal h2 .special,
+.reveal h3 .special,
+.reveal h4 .special,
+.reveal h5 .special,
 .reveal>* .special {
     color: #ea8782; 
 }
