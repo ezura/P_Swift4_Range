@@ -1,7 +1,7 @@
 ### Swift.Range family
 ### Swift4
 2017/7/25  
-\#potatotips 42  
+
 ezura
 
 ---
@@ -10,8 +10,17 @@ ezura
 * ezura
 * iOS engineer @ LINE
 * twitter: ezura (@eduraaa)
-![icon](assets/images/acount_image.jpg)
+
+<div>![icon](assets/images/acount_image.jpg)</div>
 
 ---
 
-### 
+### Range
+
+---
+
+あなたが思い浮かべた Range は
+
+---
+
+
