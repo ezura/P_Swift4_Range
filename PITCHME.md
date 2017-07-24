@@ -222,13 +222,7 @@ struct CountablePartialRangeFrom : Sequence
 
 +++
 
-+++
-
-
-
-+++
-
-
+### RangeExpression
 
 +++
 
@@ -245,6 +239,21 @@ extension RangeExpression {
     public static func ~=(pattern: Self, value: Self.Bound) -> Bool
 }
 ```
+@[3]
+
++++
+
+コレクション(Index == Bound)の文脈において、  
+`..<i` は `collection.startIndex..<i`
+
+<div>
+<span class="special">他の種類の Range も Range 型に変換できる</span>
+<span class="special">他の種類の Range も Range 型に変換できる</span>
+</div> <!-- .element: class="fragment" -->
+
++++
+
+`RangeExpression` のおかげで Range 型として
 
 +++
 
