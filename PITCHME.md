@@ -142,13 +142,13 @@ case "c"...: // ...
 default: // ...
 }
 ```
-(注: 全網羅していても `default` が必要)
+(注: 全網羅していても `default` が必要) <!-- .element: class="fragment" -->
 
 +++
 
 ```swift
-let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-let asciiTable = zip(65..., alphabet) // Zip2Sequence
+let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
 asciiTable.forEach { print($0) }
 /*
 (65, "A")
@@ -161,7 +161,7 @@ asciiTable.forEach { print($0) }
 
 ---
 
-もう少し深堀してみよう😇
+もう少し深堀りしてみよう😇
 
 +++
 
@@ -184,26 +184,30 @@ asciiTable.forEach { print($0) }
 
 ```swift
 let greeting = s.prefix(upTo: i)
-let greeting = s[..<i] // use `PartialRangeUpTo`
+// use `PartialRangeUpTo`
+let greeting = s[..<i]
 
 let withComma = s.prefix(through: i)
-let withComma = s[...i] // use `PartialRangeThrough`
+// use `PartialRangeThrough`
+let withComma = s[...i]
 
 let location = s.suffix(from: i)
-let location = s[i...] // use `PartialRangeFrom`
+// use `PartialRangeFrom`
+let location = s[i...]
 ```
 
 +++
 
-#### CountablePartialRangeFrom
-#### protocol RangeExpression
+#### `CountablePartialRangeFrom`
+#### `protocol RangeExpression`
 
 +++
 
-### CountablePartialRangeFrom
+### `CountablePartialRangeFrom`
 
 ```swift
-let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ") // use `CountablePartialRangeFrom`
+// use `CountablePartialRangeFrom`
+let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 ```
 
 +++
@@ -216,13 +220,13 @@ struct CountablePartialRangeFrom : Sequence
 
 +++
 
-* CountableRange (0..<5)
-* CountableClosedRange (0...5)
+* `CountableRange` (0..<5)
+* `CountableClosedRange` (0...5)
 仲間
 
 +++
 
-### RangeExpression
+### `RangeExpression`
 
 +++
 
