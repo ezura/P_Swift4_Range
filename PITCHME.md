@@ -4,7 +4,7 @@
 
 ezura
 
-note: こんにちは
+note: こんにちは。
 
 ---
 
@@ -17,9 +17,13 @@ note: こんにちは
 ![icon](assets/images/acount_image_c.png)
 </div>
 
+note: 繪面と申します。LINE でエンジニアしてます。
+
 ---
 
 ### Range
+
+note: Range の話をします。
 
 ---?image=assets/images/lake.jpg
 ### <span style="text-shadow: #000 1px 1px 0; color:white;">あなたが思い浮かべた `Range` は</span>
@@ -27,6 +31,12 @@ note: こんにちは
 #### <span style="color:white;">ClosedRange?</span> <!-- .element: class="fragment" -->
 #### <span style="color:white;">CountableRange?</span> <!-- .element: class="fragment" -->
 #### <span style="color:white;">CountableClosedRange?</span> <!-- .element: class="fragment" -->
+
+note: 
+はい。あなたが思い浮かべた Range は、Range 型ですか？
+ClosedRange 型ですか？
+CountableRange 型ですか？
+CountableClosedRange 型ですか？
 
 +++
 
@@ -36,6 +46,13 @@ note: こんにちは
 * CountableRange (0..<5)
 * CountableClosedRange (0...5)
 
+note:
+Swift3 の Range は 4 つありますよね。
+ちなみに、遡ってみると、
+
+おさらいしておきますと、Countable つきとそうでない Range の違いは、Countable だと、straidable の値の範囲で、離散的。Int 刻みで値の前後を表現できるものです。だからこそ、Countable な Range は Sequence に準拠できています。そうじゃないもの、例えば、double だと、0.01 刻みでも、0.001 刻みでも表現できませんよね。文字もそうですね。文字列のインデックスもですよね。
+詳しく知りたい人は分かりやすい記事があるので、最後のスライドにリンクを載せておきます。
+
 +++
 
 ### Swift2 Ranges
@@ -43,11 +60,20 @@ note: こんにちは
 * ClosedInterval ("a"..."z")
 * HalfOpenInterval (0..<5.0)
 
+note:
+Swift2 ではこの 3 つで、かなりシンプル。
+Swift3 になって、設計がが大きく変わったんですよね。
+
 ---
 
 ### Swift4 new Ranges!
 </br>
 ### <span><span class="special">One-sided Ranges</span></span> <!-- .element: class="fragment" -->
+
+note:
+はい。そして、Swift4
+新しい Range の登場です
+One-sided Ranges ですね。
 
 +++
 
@@ -58,6 +84,10 @@ note: こんにちは
 * ...5.0
 * 5...
 </div> <!-- .element: class="fragment" -->
+
+note:
+片方の範囲だけ指定する Range です。
+ということで、
 
 +++
 
@@ -72,19 +102,33 @@ note: こんにちは
 * <span class="special">CountablePartialRangeFrom (5...)</span>
 * <span class="special">protocol RangeExpression</span>
 
+note:
+Swift4 ではこうなりました。
+4 つの型と、1 つの protocol が増えました。
+
 +++
 
-今までと違い、  
+Swift2 から Swift3 への変更と違い、  
 One-sided Ranges (+ protocol) の純粋な追加 😊
+
+note:
+ただ、今回はそれほど大きな変更ではなくて、
+表面的には One-sided Ranges が単純に追加されるだけです
 
 +++
 
 ### 何が便利になるの？
 
+note:
+なぜこれが増えたのかと言うと
+
 +++
 
 ### Motivation
 書きやすさ・可読性の向上
+
+note:
+書きやすさ・可読性の向上です
 
 +++
 
@@ -105,17 +149,12 @@ let location = s.suffix(from: i)     // ", World!"
 
 現状
 
+note:
+文字列のスライスするときにすごく書きにくいですよね
+しかも、文字列の場合、インデックスがstraidableではないので書きにくさ、読みにくさに拍車をかけています
+
 +++
 
-```swift
-let greeting = s[..<i]  // "Hello"
-
-let withComma = s[...i] // "Hello,"
-
-let location = s[i...] // ", World!"
-```
-
-<div>
 ```swift
 let greeting = s[s.startIndex..<i]   // "Hello"
 let _greeting = s.prefix(upTo: i)    // "Hello"
@@ -124,7 +163,22 @@ let withComma = s.prefix(through: i) // "Hello,"
 
 let location = s.suffix(from: i)     // ", World!"
 ```
+
+<div>
+```swift
+let greeting = s[..<i]  // "Hello"
+
+let withComma = s[...i] // "Hello,"
+
+let location = s[i...] // ", World!"
+```
 </div> <!-- .element: class="fragment" -->
+
+note:
+これが、
+**
+こうなります。
+また、文字列操作だけじゃなくて
 
 +++
 
@@ -134,6 +188,9 @@ array[..<3] // ["ジャンプ", "サンデー", "ガンガン"]
 array[...2] // ["ジャンプ", "サンデー", "ガンガン"]
 array[3...] // ["花とゆめ", "なかよし"]
 ```
+
+note:
+Array などの Collection の範囲指定で使えたり
 
 +++
 
@@ -145,6 +202,9 @@ default: // ...
 }
 ```
 (注: 全網羅していても `default` が必要) <!-- .element: class="fragment" -->
+
+note:
+マッチングもできます
 
 +++
 
@@ -160,6 +220,9 @@ asciiTable.forEach { print($0) }
 (90, "Z")
 */
 ```
+
+note:
+あとは、
 
 ---
 
