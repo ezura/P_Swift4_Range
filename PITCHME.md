@@ -61,7 +61,7 @@ ezura
 
 ### Swift4
 * Range (0..<5.0)
-* ClosedRange ("a"..."z")
+* ClosedRange (0...5.0)
 * CountableRange (0..<5)
 * CountableClosedRange (0...5)
 * <span class="special">PartialRangeFrom (5.0...)</span>
@@ -92,26 +92,37 @@ let i = s.index(of: ",")!
 
 let greeting = s[s.startIndex..<i]   // "Hello"
 let _greeting = s.prefix(upTo: i)    // "Hello"
+
 let withComma = s.prefix(through: i) // "Hello,"
+
 let location = s.suffix(from: i)     // ", World!"
 ```
 @[4-5]
-@[6]
 @[7]
+@[9]
 
 現状
 
 +++
 
 ```swift
-let s = "Hello, World!"
-let i = s.index(of: ",")!
-
 let greeting = s[..<i]  // "Hello"
+
 let withComma = s[...i] // "Hello,"
+
 let location = s[i...] // ", World!"
 ```
-@[4-6]
+
+<div>
+```swift
+let greeting = s[s.startIndex..<i]   // "Hello"
+let _greeting = s.prefix(upTo: i)    // "Hello"
+
+let withComma = s.prefix(through: i) // "Hello,"
+
+let location = s.suffix(from: i)     // ", World!"
+```
+</div> <!-- .element: class="fragment" -->
 
 +++
 
@@ -150,7 +161,7 @@ asciiTable.forEach { print($0) }
 
 ---
 
-違和感…
+もう少し深堀してみよう😇
 
 +++
 
@@ -184,8 +195,6 @@ let location = s[i...] // use `PartialRangeFrom`
 
 +++
 
-### 残りは
-
 #### CountablePartialRangeFrom
 #### protocol RangeExpression
 
@@ -194,25 +203,35 @@ let location = s[i...] // use `PartialRangeFrom`
 ### CountablePartialRangeFrom
 
 ```swift
-extension CountablePartialRangeFrom : Sequence 
+let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ") // use `CountablePartialRangeFrom`
+```
+
++++
+
+```swift
+struct CountablePartialRangeFrom : Sequence 
     where Bound : Strideable,
           Bound.Stride : SignedInteger { ... }
 ```
 
 +++
 
-```swift
-let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ") // use CountablePartialRangeFrom
-```
-
-```swift
-
-```
+* CountableRange (0..<5)
+* CountableClosedRange (0...5)
+仲間
 
 +++
 
-今まで、Range 型間で直接的な関係がなかった  
-  
++++
+
+
+
++++
+
+
+
++++
+
 Range への変換を備える
 
 ```swift
