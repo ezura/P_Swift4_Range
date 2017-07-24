@@ -226,7 +226,7 @@ struct CountablePartialRangeFrom : Sequence
 
 +++
 
-Range への変換を備える
+Range 型への変換を備える
 
 ```swift
 public protocol RangeExpression {
@@ -243,17 +243,40 @@ extension RangeExpression {
 
 +++
 
-コレクション(Index == Bound)の文脈において、  
-`..<i` は `collection.startIndex..<i`
+<div class="special">
+コレクション(*Range.Bound == Collection.Index)の  
+文脈において、*Range は Range 型に変換可能 =
+"Range 型" として統一的に扱える
+</div>
 
 <div>
-<span class="special">他の種類の Range も Range 型に変換できる</span>
-<span class="special">他の種類の Range も Range 型に変換できる</span>
+```swift
+s[..<i]
+s[s.startIndex..<i]
+
+s[i...]
+s[i..<s.endIndex]
+
+// 残りは https://github.com/ezura/swift/blob/73ba66abe11486401375c7f8f67352f3e7d6c529/stdlib/public/core/Range.swift.gyb#L541-L552
+// https://github.com/apple/swift/blob/0e70dced60837bf7ade24d08ef9c5b459f9ec4f6/stdlib/public/core/Range.swift.gyb#L807
+// 参照
+```
 </div> <!-- .element: class="fragment" -->
 
-+++
+---
 
-`RangeExpression` のおかげで Range 型として
+### まとめ
 
-+++
+* One-sided Ranges が追加
+* 既存のコードに影響なし
+* 複雑化したように見えてそうでもない
 
+---
+
+### 参考
+
+* [apple/swift-evolution/proposals/0172-one-sided-ranges.md](https://github.com/apple/swift-evolution/blob/master/proposals/0172-one-sided-ranges.md)
+* [[stdlib] One-sided ranges and RangeExpression](https://github.com/apple/swift/pull/8710/files)
+* [apple/swift/docs/StringManifesto.md String Processing For Swift 4](https://github.com/apple/swift/blob/master/docs/StringManifesto.md#unification-of-slicing-operations)
+* [Swift 3のRange徹底解説](http://qiita.com/mono0926/items/88779ceff30f8fc705c5)
+* [What’s New in Swift 4?](https://www.raywenderlich.com/163857/whats-new-swift-4)
