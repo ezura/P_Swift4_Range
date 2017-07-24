@@ -4,6 +4,8 @@
 
 ezura
 
+note: こんにちは
+
 ---
 
 ### "\\(self)"
@@ -254,6 +256,7 @@ extension RangeExpression {
 </div>
 
 <div>
+
 ```swift
 s[..<i]
 s[s.startIndex..<i]
@@ -265,6 +268,7 @@ s[i..<s.endIndex]
 // https://github.com/apple/swift/blob/0e70dced60837bf7ade24d08ef9c5b459f9ec4f6/stdlib/public/core/Range.swift.gyb#L807
 // 参照
 ```
+
 </div> <!-- .element: class="fragment" -->
 
 ---
