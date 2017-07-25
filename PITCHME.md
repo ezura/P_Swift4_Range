@@ -338,7 +338,8 @@ note:
 
 +++
 
-Range を表す全ての型が `RangeExpression` に準拠するように変更
+Range を表す全ての型が  
+`RangeExpression` に準拠
 
 ```swift
 public protocol RangeExpression {
@@ -361,7 +362,8 @@ note:
 
 <div class="special">
 コレクション(*Range.Bound == Collection.Index)の  
-文脈において、*Range は Range 型に変換可能 =
+文脈において、*Range は Range 型に変換可能  
+=  
 "Range 型" として統一的に扱える
 </div>
 
