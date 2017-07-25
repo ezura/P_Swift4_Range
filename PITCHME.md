@@ -392,7 +392,7 @@ Range 型に変換可能、つまり、扱う際に ”Range 型" として統�
 ### まとめ
 
 * One-sided Ranges が追加
-* stdlid 内で Range 周りの設計が少し変更された
+* Range 周りの設計が少し変更された
 * 複雑化したように見えて、意外と簡単
 
 note:
