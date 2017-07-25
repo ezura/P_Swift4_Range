@@ -4,7 +4,8 @@
 
 ezura
 
-note: こんにちは。
+note: 
+こんにちは。
 
 ---
 
@@ -17,7 +18,8 @@ note: こんにちは。
 ![icon](assets/images/acount_image_c.png)
 </div>
 
-note: 繪面と申します。LINE でエンジニアしてます。
+note:
+繪面と申します。LINE でエンジニアしてます。
 
 ---
 
@@ -32,9 +34,7 @@ note: Range の話をします。
 #### <span style="color:white;">CountableRange?</span> <!-- .element: class="fragment" -->
 #### <span style="color:white;">CountableClosedRange?</span> <!-- .element: class="fragment" -->
 
-note: 
-はい。あなたが思い浮かべた Range は、Range 型ですか？
-ClosedRange 型ですか？
+note: はい。あなたが思い浮かべた Range は、Range 型ですか？\nClosedRange 型ですか？  
 CountableRange 型ですか？
 CountableClosedRange 型ですか？
 
@@ -201,7 +201,8 @@ case "c"...: // ...
 default: // ...
 }
 ```
-(注: 全網羅していても `default` が必要) <!-- .element: class="fragment" -->
+
+(注: 全網羅していても `default` が必要)
 
 note:
 マッチングもできます
