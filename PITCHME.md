@@ -302,7 +302,6 @@ CountablePartialRangeFrom はここに出てきていました。
 zip(1... as CountablePartialRangeFrom,
     ["🍎", "🍇", "🍐", "🍓"])
 ```
-@[1]
 
 
 #### PartialRangeFrom
@@ -311,7 +310,6 @@ zip(1... as CountablePartialRangeFrom,
 zip(1... as PartialRangeFrom,
     ["🍎", "🍇", "🍐", "🍓"])
 ```
-@[2]
 
 note:
 もちろん、Int型の範囲を PartialRangeFrom で表すこともできますが Sequence の性質は持ちません。なぜなら、PartialRangeFrom は表す範囲の空間が int 刻みだとは規定していないからです。
