@@ -1,4 +1,4 @@
 slide-number: true
 highlight : github
 theme-override : assets/css/PITCHME.css
-
+theme : beige
