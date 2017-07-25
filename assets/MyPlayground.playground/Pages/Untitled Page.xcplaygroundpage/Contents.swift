@@ -47,6 +47,10 @@ table.forEach { print($0) }
  (4, "🍓")
  */
 
+// error: Argument type 'PartialRangeFrom<Int>' does not conform to expected type 'Sequence'
+zip(1... as CountablePartialRangeFrom,
+    ["🍎", "🍇", "🍐", "🍓"])
+
 for (code, letter) in asciiTable {
     print(code, letter)
 }
@@ -90,4 +94,6 @@ func type<T>(of: T) -> T.Type { fatalError() }
 //}
 
 //A.B()
+
+("a"..<"b") //as CountableRange
 

@@ -4,8 +4,6 @@
 
 ezura
 
-note: 
-こんにちは。
 
 ---
 
@@ -17,9 +15,6 @@ note:
 <div style="text-align:">
 ![icon](assets/images/acount_image_c.png)
 </div>
-
-note:
-繪面と申します。LINE でエンジニアしてます。
 
 ---
 
@@ -34,9 +29,10 @@ note: Range の話をします。
 #### <span style="color:white;">CountableRange?</span> <!-- .element: class="fragment" -->
 #### <span style="color:white;">CountableClosedRange?</span> <!-- .element: class="fragment" -->
 
-note: はい。あなたが思い浮かべた Range は、Range 型ですか？\nClosedRange 型ですか？  
-CountableRange 型ですか？
-CountableClosedRange 型ですか？
+note: あなたが思い浮かべた Range は、Range 型ですか？  
+ClosedRange 型ですか？  
+CountableRange 型ですか？  
+CountableClosedRange 型ですか？  
 
 +++
 
@@ -48,9 +44,12 @@ CountableClosedRange 型ですか？
 
 note:
 Swift3 の Range は 4 つありますよね。
-ちなみに、遡ってみると、
 
-おさらいしておきますと、Countable つきとそうでない Range の違いは、Countable だと、straidable の値の範囲で、離散的。Int 刻みで値の前後を表現できるものです。だからこそ、Countable な Range は Sequence に準拠できています。そうじゃないもの、例えば、double だと、0.01 刻みでも、0.001 刻みでも表現できませんよね。文字もそうですね。文字列のインデックスもですよね。
+おさらいしておきますと、Countable つきとそうでない Range の違いは、Countable だと、Int 刻みでその次の値を表現できる空間の範囲を表します。1 の次は 2 とか。  
+
+だからこそ、Countable な Range は Sequence に準拠できています。
+
+そうじゃないもの、例えば、double だと、0 の次の値がわかりません。0.01 刻みでも、0.001 刻みでも表現できませんよね。文字や、文字列のインデックスもこれに当てはまります。
 詳しく知りたい人は分かりやすい記事があるので、最後のスライドにリンクを載せておきます。
 
 +++
@@ -62,7 +61,7 @@ Swift3 の Range は 4 つありますよね。
 
 note:
 Swift2 ではこの 3 つで、かなりシンプル。
-しかし、問題があって、Swift3 になって、設計が大きく変わったんですよね。
+しかし、問題があって、Swift3 になって、設計が変わりました。
 
 ---
 
@@ -71,9 +70,9 @@ Swift2 ではこの 3 つで、かなりシンプル。
 ### <span><span class="special">One-sided Ranges</span></span> <!-- .element: class="fragment" -->
 
 note:
-はい。そして、Swift4
+そして、Swift4
 新しい Range の登場です
-One-sided Ranges ですね。
+One-sided Ranges です。
 
 +++
 
@@ -113,7 +112,7 @@ One-sided Ranges (+ protocol) の純粋な追加 😊
 
 note:
 ただ、今回はそれほど大きな変更ではなくて、
-表面的には One-sided Ranges が単純に追加されるだけです
+表面的には One-sided Ranges が追加されるだけです
 
 +++
 
@@ -210,17 +209,15 @@ note:
 +++
 
 ```swift
-let asciiTable = zip(65..., 
-                     "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-asciiTable.forEach { print($0) }
+let table = zip(1...,
+                ["🍎", "🍇", "🍐", "🍓"])
+table.forEach { print($0) }
 /*
-(65, "A")
-(66, "B")
-...
-(89, "Y")
-(90, "Z")
-*/
+ (1, "🍎")
+ (2, "🍇")
+ (3, "🍐")
+ (4, "🍓")
+ */
 ```
 
 note:
@@ -230,6 +227,9 @@ note:
 ---
 
 どこに何の型があったの？ 🤔
+
+note:
+今紹介した使用例の中で、追加された型はどこで使われていたでしょうか
 
 +++
 
@@ -245,6 +245,9 @@ note:
 * <span class="special">protocol RangeExpression</span>
 
 増えたのは型が 4 つと protocol
+
+note:
+増えたのは型が 4 つと protocolです
 
 +++
 
@@ -263,7 +266,7 @@ let location = s[i...]
 ```
 
 note:
-protosal の mitivation にあげられていたコードに、それぞれどの型を追加して解決したのか見てみましょう。
+proposal の motivation としてあげられていたコードに、それぞれどの型を追加して解決したのか見てみましょう。
 名前が一致しているのもあり、分かりやすいですね。
 
 +++
@@ -279,40 +282,68 @@ note:
 ### `CountablePartialRangeFrom`
 
 ```swift
-// use `CountablePartialRangeFrom`
-let asciiTable = zip(65...,
-                     "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+let table = zip(1..., // `CountablePartialRangeFrom`
+                ["🍎", "🍇", "🍐", "🍓"])
+table.forEach { print($0) }
+/*
+ (1, "🍎")
+ (2, "🍇")
+ (3, "🍐")
+ (4, "🍓")
+ */
 ```
 
 note:
 CountablePartialRangeFrom はここに出てきていました。
-65... のところです。
-今もある、CountableRange の one-sided range 版です。
+1... のところです。
+一見、PartialRangeFrom と同じに見えますが、Sequence の性質をもちます。
 
 +++
 
+#### CountablePartialRangeFrom
 ```swift
-struct CountablePartialRangeFrom : Sequence 
-    where Bound : Strideable,
-          Bound.Stride : SignedInteger { ... }
+zip(1... as CountablePartialRangeFrom,
+    ["🍎", "🍇", "🍐", "🍓"])
 ```
+@[1]
+
+
+#### PartialRangeFrom
+```swift
+// error: Argument type 'PartialRangeFrom<Int>' does not conform to expected type 'Sequence'
+zip(1... as PartialRangeFrom,
+    ["🍎", "🍇", "🍐", "🍓"])
+```
+@[2]
 
 note:
-他の CountableRange と同様に、Sequence の性質を持つので zip が扱えています。
+もちろん、Int型の範囲を PartialRangeFrom で表すこともできますが Sequence の性質は持ちません。なぜなら、PartialRangeFrom は表す範囲の空間が int 刻みだとは規定していないからです。
 
 +++
 
-* `CountableRange` (0..<5)
-* `CountableClosedRange` (0...5)
-仲間
+* <span class=“quiet”>Range (0..<5.0)</span>
+* <span class=“quiet”>ClosedRange (“a”…”z”)</span>
+* <span class="special">`CountableRange` (0..<5)</span>
+* <span class="special">`CountableClosedRange` (0...5)</span>
+* <span class="quiet">PartialRangeFrom (5.0...)</span>
+* <span class="quiet">PartialRangeUpTo (..<5.0)</span>
+* <span class="quiet">PartialRangeThrough (...5.0)</span>
+* <span class="special">CountablePartialRangeFrom (5...)</span>
+* <span class="quiet">protocol RangeExpression</span>
+
+note:
+つまり、CountablePartialRangeFrom は Swift3 からあった、CountableRange の one-sided range 版です。
 
 +++
 
-### `RangeExpression`
+### `protocol RangeExpression`
+
+note:
+最後に、RangeExpressionです。
 
 +++
 
-Range 型への変換を備える
+Range を表す全ての型が `RangeExpression` に準拠するように変更
 
 ```swift
 public protocol RangeExpression {
@@ -326,6 +357,10 @@ extension RangeExpression {
 }
 ```
 @[3]
+
+note:
+範囲を表す全ての型が `RangeExpression` に準拠するように変更されました。
+この protocol のモチベーションは Range 型への変換を備えることです。
 
 +++
 
@@ -351,13 +386,21 @@ s[i..<s.endIndex]
 
 </div> <!-- .element: class="fragment" -->
 
+note:
+範囲を表す型が増えても、それらを RangeExpression として抽象化し、
+Range 型に変換可能、つまり、扱う際に ”Range 型" として統一して使用可能にしたことで、複雑化を回避できます。
+
 ---
 
 ### まとめ
 
 * One-sided Ranges が追加
 * stdlid 内で Range 周りの設計が少し変更された
-* 複雑化したように見えて、整理すると簡単
+* 複雑化したように見えて、意外と簡単
+
+note:
+Swift4 では、One-sided Ranges が追加され、Range 周りが少し変わりました。
+Rangeは少し渋い部分ではありますが、成り立ちから知っておくと、ドラマがあっておもしろいかなと思います。
 
 ---
 

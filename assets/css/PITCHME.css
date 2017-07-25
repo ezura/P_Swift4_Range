@@ -20,3 +20,7 @@
 .reveal>* .special {
     color: #ea8782; 
 }
+
+.quiet>* . {
+    alpha: 0.3; 
+}
