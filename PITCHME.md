@@ -62,7 +62,7 @@ Swift3 の Range は 4 つありますよね。
 
 note:
 Swift2 ではこの 3 つで、かなりシンプル。
-Swift3 になって、設計がが大きく変わったんですよね。
+しかし、問題があって、Swift3 になって、設計が大きく変わったんですよね。
 
 ---
 
@@ -210,7 +210,8 @@ note:
 +++
 
 ```swift
-let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+let asciiTable = zip(65..., 
+                     "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 asciiTable.forEach { print($0) }
 /*
@@ -223,11 +224,12 @@ asciiTable.forEach { print($0) }
 ```
 
 note:
-あとは、
+あとは、こんな感じでzipできたりします。便利そうですよね。
+何ができるかわかったところで、もう少し踏み込んでみましょうか
 
 ---
 
-もう少し深堀りしてみよう😇
+どこに何の型があったの？ 🤔
 
 +++
 
@@ -242,9 +244,7 @@ note:
 * <span class="special">CountablePartialRangeFrom (5...)</span>
 * <span class="special">protocol RangeExpression</span>
 
-+++
-
-増えたのは型が 4 つと protocol？
+増えたのは型が 4 つと protocol
 
 +++
 
@@ -262,10 +262,17 @@ let location = s.suffix(from: i)
 let location = s[i...]
 ```
 
+note:
+protosal の mitivation にあげられていたコードに、それぞれどの型を追加して解決したのか見てみましょう。
+名前が一致しているのもあり、分かりやすいですね。
+
 +++
 
 #### `CountablePartialRangeFrom`
 #### `protocol RangeExpression`
+
+note:
+残り二つですが
 
 +++
 
@@ -273,8 +280,14 @@ let location = s[i...]
 
 ```swift
 // use `CountablePartialRangeFrom`
-let asciiTable = zip(65..., "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+let asciiTable = zip(65...,
+                     "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 ```
+
+note:
+CountablePartialRangeFrom はここに出てきていました。
+65... のところです。
+今もある、CountableRange の one-sided range 版です。
 
 +++
 
@@ -283,6 +296,9 @@ struct CountablePartialRangeFrom : Sequence
     where Bound : Strideable,
           Bound.Stride : SignedInteger { ... }
 ```
+
+note:
+他の CountableRange と同様に、Sequence の性質を持つので zip が扱えています。
 
 +++
 
@@ -340,7 +356,7 @@ s[i..<s.endIndex]
 ### まとめ
 
 * One-sided Ranges が追加
-* 既存のコードに影響なし
+* stdlid 内で Range 周りの設計が少し変更された
 * 複雑化したように見えて、整理すると簡単
 
 ---
