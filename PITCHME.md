@@ -46,10 +46,7 @@ note:
 Swift3 の Range は 4 つありますよね。
 
 おさらいしておきますと、Countable つきとそうでない Range の違いは、Countable だと、Int 刻みでその次の値を表現できる空間の範囲を表します。1 の次は 2 とか。  
-
-だからこそ、Countable な Range は Sequence に準拠できています。
-
-そうじゃないもの、例えば、double だと、0 の次の値がわかりません。0.01 刻みでも、0.001 刻みでも表現できませんよね。文字や、文字列のインデックスもこれに当てはまります。
+そうじゃないもの、例えば、double 型だと、0 の次の値がわかりません。0.01 刻みでも、0.001 刻みでも表現できませんよね。他にも文字や、文字列のインデックスもこれに当てはまります。
 詳しく知りたい人は分かりやすい記事があるので、最後のスライドにリンクを載せておきます。
 
 +++
@@ -85,6 +82,7 @@ One-sided Ranges です。
 </div> <!-- .element: class="fragment" -->
 
 note:
+One-sided Ranges というのが何かというと、
 片方の範囲だけ指定する Range です。
 ということで、
 
@@ -149,8 +147,10 @@ let location = s.suffix(from: i)     // ", World!"
 現状
 
 note:
-文字列のスライスするときにすごく書きにくいですよね
-しかも、文字列の場合、インデックスがstraidableではないので書きにくさ、読みにくさに拍車をかけています
+文字列のスライスするときにすごく書きにくいですよね。  
+任意の場所の前までスライスするとき。//  
+任意の場所までスライスするとき。//  
+任意の場所から最後までスライスするとき。//  
 
 +++
 
@@ -296,7 +296,8 @@ table.forEach { print($0) }
 note:
 CountablePartialRangeFrom はここに出てきていました。
 1... のところです。
-一見、PartialRangeFrom と同じに見えますが、Sequence の性質をもちます。
+一見、PartialRangeFrom と同じに見えますが、CountablePartialRangeFrom は Swift3 からあった、CountableRange の one-sided range 版です。
+つまり、CountableRange と同様、Sequence の性質をもちます。
 
 +++
 
@@ -332,7 +333,7 @@ note:
 * <span class="quiet">protocol RangeExpression</span>
 
 note:
-つまり、CountablePartialRangeFrom は Swift3 からあった、CountableRange の one-sided range 版です。
+CountableRange　の仲間として一つ種類が増えた、という感じです。
 
 +++
 
