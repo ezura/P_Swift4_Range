@@ -43,7 +43,7 @@ CountableClosedRange 型ですか？
 * CountableClosedRange (0...5)
 
 note:
-Swift3 の Range は 4 つありますよね。
+Swift3 の Range は 4 つあります。
 
 おさらいしておきますと、Countable つきとそうでない Range がありますよね
 Countable だと、Int 刻みでその次の値を表現できる空間の範囲を表します。1 の次は 2 とか。  
