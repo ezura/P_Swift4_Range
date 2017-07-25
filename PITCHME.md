@@ -201,8 +201,6 @@ default: // ...
 }
 ```
 
-(注: 全網羅していても `default` が必要)
-
 note:
 マッチングもできます
 
@@ -243,8 +241,6 @@ note:
 * <span class="special">PartialRangeThrough (...5.0)</span>
 * <span class="special">CountablePartialRangeFrom (5...)</span>
 * <span class="special">protocol RangeExpression</span>
-
-増えたのは型が 4 つと protocol
 
 note:
 増えたのは型が 4 つと protocolです
